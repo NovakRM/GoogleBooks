@@ -10,13 +10,20 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [cards, setCards] = useState([])
 
+  const removeExtraSpace = s =>
+  s
+  .trim()
+  .split(/ +/)
+  .join(" ");
+
   //search
   const handleSubmit = () => {
     setLoading(true)
+    removeExtraSpace(query)
     axios
     .get(`https://www.googleapis.com/books/v1/volumes?q=${query}`)
     .then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       if (res.data.items.length > 0){
         setCards(res.data.items)
         setLoading(false)
@@ -37,8 +44,8 @@ function App() {
 
       return(
         <div 
-        className="col-lg-4"
-        key={item.id}
+          className="col-lg-4"
+          key={item.id}
         >
           <BookCard 
             thumbnail={ thumbnail}
@@ -47,6 +54,7 @@ function App() {
             language={item.volumeInfo.lanugage} 
             authors={item.volumeInfo.authors} 
             publisher={item.volumeInfo.publisher} 
+            description={item.volumeInfo.description}
             previewLink={item.volumeInfo.previewLink} 
             infoLink={item.volumeInfo.infoLink} 
           />
