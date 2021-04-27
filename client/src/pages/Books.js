@@ -15,28 +15,20 @@ function Books() {
     loadBooks()
   }, [])
 
-  function authors(authArry){
-    console.log(authArry)  
-    if (authArry){
-      return authArry.toString("")
-    }
-  }
-
 
   function saveBook (event){
     console.log(books)
     console.log(event.target)
     let savedBook = books.filter(book => book.id === event.target.id)
     API.saveBook({
-              title: savedBook[0].volumeInfo.title,
-              authors: savedBook[0].volumeInfo.authors,
-              description: savedBook[0].volumeInfo.description,
-              image: savedBook[0].volumeInfo.imageLinks.smallThumbnail,
-              link: savedBook[0].volumeInfo.infoLink
-            })
-              .then(res => console.log(res))
-              .catch(err => console.log(err));
-          }
+        title: savedBook[0].volumeInfo.title,
+        authors: savedBook[0].volumeInfo.authors,
+        description: savedBook[0].volumeInfo.description,
+        image: savedBook[0].volumeInfo.imageLinks.smallThumbnail,
+      })
+        .then(res => console.log(res))
+        .catch(err => console.log(err));
+    }
 
   // Loads all books and sets them to books
   function loadBooks() {
@@ -95,10 +87,6 @@ function Books() {
                           <span>Title: { book.volumeInfo.title}</span>
                           <br />
                           <span>Author(s): { book.volumeInfo.authors}</span>
-
-                        <Link to={"/books/" + book._id}>
-                          <span> More Info <a href={book.selfLink}>Here</a></span>
-                        </Link>
 
                         <FormBtn
                           id={book.id}
