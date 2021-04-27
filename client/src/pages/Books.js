@@ -15,6 +15,14 @@ function Books() {
     loadBooks()
   }, [])
 
+  function authors(authArry){
+    console.log(authArry)  
+    if (authArry){
+      return authArry.toString("")
+    }
+  }
+
+
   function saveBook (event){
     console.log(books)
     console.log(event.target)
