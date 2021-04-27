@@ -2,18 +2,20 @@ import React from "react";
 
 function Nav() {
   return (
-    <div>
 
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a className="navbar-brand" href="/">
-        React Reading List
-      </a>
-    </nav>
-    <ul>
-        <li><a href="/">Search</a></li>
-        <li><a href="/saved">Saved</a></li>
-    </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Google Books</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" href="/">Search</a>
+        <a class="nav-item nav-link" href="/saved">Saved</a>
+      </div>
     </div>
+  </nav>
+
   );
 }
 

@@ -61,7 +61,7 @@ function Books() {
     return (
       <Container fluid>
         <Row>
-          <Col size="md-6">
+          <Col size="md-12 d-flex justify-content-center">
             <form>
               <Input
                 onChange={handleInputChange}
@@ -82,13 +82,14 @@ function Books() {
                 <List>
                   {books.map(book => (
                     <div className="card d-flex flex-row justify-content-between align-items-center mx-10">
-                      <ListItem key={book._id} className="d-flex">
+                      <ListItem key={book._id}>
 
-                            <li>Title:{book.volumeInfo.title}</li>
-                            <li>Author(s):{book.volumeInfo.authors}</li>
+                          <span>Title: { book.volumeInfo.title}</span>
+                          <br />
+                          <span>Author(s): { book.volumeInfo.authors}</span>
 
                         <Link to={"/books/" + book._id}>
-                            <li> More Info <a href={book.selfLink}>Here</a></li>
+                          <span> More Info <a href={book.selfLink}>Here</a></span>
                         </Link>
 
                         <FormBtn
